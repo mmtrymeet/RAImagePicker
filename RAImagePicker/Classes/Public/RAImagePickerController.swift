@@ -87,6 +87,12 @@ open class RAImagePickerController : UIViewController {
         collectionView.deselectItem(at: path, animated: animated)
     }
     
+    public func deselectAsset(asset: PHAsset, animated: Bool) {
+        let index = collectionViewDataSource.assetsModel.fetchResult.index(of: asset)
+        deselectAsset(at: index, animated: animated)
+        
+    }
+    
     // Deselect all selected asstes programatically
     public func deselectAllAssets(animated: Bool) {
         for selectedPath in collectionView.indexPathsForSelectedItems ?? [] {
