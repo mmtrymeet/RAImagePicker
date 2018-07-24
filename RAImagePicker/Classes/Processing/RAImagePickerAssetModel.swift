@@ -27,7 +27,7 @@ final class RAImagePickerAssetModel {
         
         let assetsOptions = PHFetchOptions()
         assetsOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        assetsOptions.fetchLimit = 1000
+        assetsOptions.fetchLimit = 100
         
         let collections = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
         if let cameraRoll = collections.firstObject {
@@ -92,11 +92,11 @@ final class RAImagePickerAssetModel {
             .map { indexPath in fetchResult.object(at: indexPath.item) }
         
         // Update the assets the PHCachingImageManager is caching.
-        imageManager.startCachingImages(for: addedAssets, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
-        debugPrint("Asset Model: caching, size \(thumbnailSize), preheat rect \(preheatRect), items \(addedAssets.count)")
-        
-        imageManager.stopCachingImages(for: removedAssets, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
-        debugPrint("Asset Model: uncaching, preheat rect \(preheatRect), items \(removedAssets.count)")
+//        imageManager.startCachingImages(for: addedAssets, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
+//        debugPrint("Asset Model: caching, size \(thumbnailSize), preheat rect \(preheatRect), items \(addedAssets.count)")
+//        
+//        imageManager.stopCachingImages(for: removedAssets, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
+//        debugPrint("Asset Model: uncaching, preheat rect \(preheatRect), items \(removedAssets.count)")
         
         // Store the preheat rect to compare against in the future.
         previousPreheatRect = preheatRect
